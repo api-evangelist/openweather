@@ -1,8 +1,11 @@
 openapi: 3.1.0
 info:
-  title: OpenWeather One Call API 3.0
+  title: OpenWeather
   version: 1.0.0
-  description: API for accessing weather data, forecasts, and alerts.
+  description: |-
+    Air Pollution API provides current, forecast and historical air pollution
+    data for any coordinates on the globe. Besides basic Air Quality Index,
+    the API ...
 servers:
   - url: https://api.openweathermap.org/data/3.0
 paths:
