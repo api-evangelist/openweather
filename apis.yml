@@ -11,10 +11,9 @@ apis:
     properties:
       - url: https://openweathermap.org/api/air-pollution
         type: Documentation
-      - type: OpenAPI
-        url: properties/openweather-openapi.yml
+      - url: properties/openweather-openapi.yml
+        type: OpenAPI
     description: |-
-
       Air Pollution API provides current, forecast and historical air pollution
       data for any coordinates on the globe. Besides basic Air Quality Index,
       the API ...
