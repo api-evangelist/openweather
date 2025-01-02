@@ -1,0 +1,96 @@
+openapi: 3.1.0
+info:
+  title: OpenWeather One Call API 3.0
+  version: 1.0.0
+  description: API for accessing weather data, forecasts, and alerts.
+servers:
+  - url: https://api.openweathermap.org/data/3.0
+paths:
+  /onecall:
+    get:
+      summary: Current and forecast weather data
+      parameters:
+        - name: lat
+          in: query
+          required: true
+          description: Latitude, decimal (-90; 90).
+          schema:
+            type: number
+            format: float
+        - name: lon
+          in: query
+          required: true
+          description: Longitude, decimal (-180; 180).
+          schema:
+            type: number
+            format: float
+        - name: exclude
+          in: query
+          required: false
+          description: >-
+            Exclude parts of weather data (comma-separated). Options: current,
+            minutely, hourly, daily, alerts.
+          schema:
+            type: string
+        - name: units
+          in: query
+          required: false
+          description: 'Units of measurement. Options: standard, metric, imperial.'
+          schema:
+            type: string
+        - name: lang
+          in: query
+          required: false
+          description: Language for response data.
+          schema:
+            type: string
+        - name: appid
+          in: query
+          required: true
+          description: Your unique API key.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response with weather data.
+          content:
+            application/json:
+              example:
+                lat: 33.44
+                lon: -94.04
+                timezone: America/Chicago
+                current:
+                  dt: 1684929490
+                  temp: 292.55
+                  weather:
+                    - id: 803
+                      main: Clouds
+                      description: broken clouds
+                      icon: 04d
+                hourly:
+                  - dt: 1684926000
+                    temp: 292.01
+                    weather:
+                      - id: 803
+                        main: Clouds
+                        description: broken clouds
+                        icon: 04n
+        '400':
+          description: Invalid request parameters.
+        '401':
+          description: Unauthorized - Invalid API key.
+        '429':
+          description: Too many requests.
+components:
+  schemas:
+    Weather:
+      type: object
+      properties:
+        id:
+          type: integer
+        main:
+          type: string
+        description:
+          type: string
+        icon:
+          type: string
