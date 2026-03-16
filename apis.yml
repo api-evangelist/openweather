@@ -1,6 +1,6 @@
 aid: openweather
 url: >-
-  https://raw.githubusercontent.com/api-search/openweather/refs/heads/main/apis.yml
+  https://raw.githubusercontent.com/api-evangelist/openweather/refs/heads/main/apis.yml
 apis:
   - aid: openweather:openweather
     name: OpenWeather
@@ -25,7 +25,7 @@ type: Contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 created: '2024-11-07'
-modified: '2025-01-02'
+modified: '2026-03-16'
 position: Consuming
 description: >-
   OpenWeather is a data platform that provides accurate and reliable weather
@@ -41,5 +41,5 @@ description: >-
   changing weather patterns.
 maintainers:
   - FN: Kin Lane
-    email: info@apievangelist.com
+    email: kin@apievangelist.com
 specificationVersion: '0.19'
