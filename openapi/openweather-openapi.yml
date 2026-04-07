@@ -11,7 +11,7 @@ servers:
 paths:
   /onecall:
     get:
-      summary: Current and forecast weather data
+      summary: OpenWeather Current and forecast weather data
       parameters:
         - name: lat
           in: query
