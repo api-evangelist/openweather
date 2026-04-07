@@ -84,6 +84,8 @@ paths:
           description: Unauthorized - Invalid API key.
         '429':
           description: Too many requests.
+      tags:
+        - Onecall
 components:
   schemas:
     Weather:
@@ -97,3 +99,5 @@ components:
           type: string
         icon:
           type: string
+tags:
+  - name: Onecall

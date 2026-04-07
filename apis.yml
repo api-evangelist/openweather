@@ -5,9 +5,9 @@ apis:
   - aid: openweather:openweather
     name: OpenWeather
     tags:
-      - Weather
       - Air Pollution
       - Air Quality
+      - Weather
     humanURL: https://openweathermap.org/api/air-pollution
     properties:
       - url: https://openweathermap.org/api/air-pollution
