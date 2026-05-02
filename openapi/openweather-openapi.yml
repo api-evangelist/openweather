@@ -1,29 +1,47 @@
 openapi: 3.1.0
 info:
-  title: OpenWeather
+  title: OpenWeather One Call and Air Pollution API
   version: 1.0.0
-  description: |-
-    Air Pollution API provides current, forecast and historical air pollution
-    data for any coordinates on the globe. Besides basic Air Quality Index,
-    the API ...
+  description: >-
+    Programmatic access to the OpenWeather One Call API for current,
+    minute, hourly, and daily forecasts plus government weather alerts,
+    and the OpenWeather Air Pollution API for current, forecast, and
+    historical air quality data including the Air Quality Index and
+    pollutant concentrations.
+  contact:
+    name: OpenWeather
+    url: https://openweathermap.org/api
+  license:
+    name: Creative Commons Attribution-ShareAlike 4.0 International
+    url: https://creativecommons.org/licenses/by-sa/4.0/
 servers:
   - url: https://api.openweathermap.org/data/3.0
+    description: One Call API base URL
+  - url: https://api.openweathermap.org/data/2.5
+    description: Air Pollution API base URL
 paths:
   /onecall:
     get:
-      summary: OpenWeather Current and forecast weather data
+      operationId: getOneCall
+      summary: Current and forecast weather data for a coordinate
+      description: >-
+        Returns current weather, minute-by-minute forecast for one hour,
+        hourly forecast for 48 hours, daily forecast for 8 days, and any
+        government weather alerts for the supplied latitude and longitude.
+      tags:
+        - One Call
       parameters:
         - name: lat
           in: query
           required: true
-          description: Latitude, decimal (-90; 90).
+          description: Latitude in decimal degrees, range -90 to 90.
           schema:
             type: number
             format: float
         - name: lon
           in: query
           required: true
-          description: Longitude, decimal (-180; 180).
+          description: Longitude in decimal degrees, range -180 to 180.
           schema:
             type: number
             format: float
@@ -31,61 +49,254 @@ paths:
           in: query
           required: false
           description: >-
-            Exclude parts of weather data (comma-separated). Options: current,
-            minutely, hourly, daily, alerts.
+            Comma-separated list of forecast blocks to omit from the
+            response. Allowed values are current, minutely, hourly,
+            daily, and alerts.
           schema:
             type: string
         - name: units
           in: query
           required: false
-          description: 'Units of measurement. Options: standard, metric, imperial.'
+          description: >-
+            Units of measurement. One of standard, metric, or imperial.
+            Default is standard (Kelvin, m/s).
           schema:
             type: string
+            enum:
+              - standard
+              - metric
+              - imperial
         - name: lang
           in: query
           required: false
-          description: Language for response data.
+          description: ISO language code for localized response text.
           schema:
             type: string
         - name: appid
           in: query
           required: true
-          description: Your unique API key.
+          description: OpenWeather API key.
           schema:
             type: string
       responses:
         '200':
-          description: Successful response with weather data.
+          description: Successful response with combined weather data.
           content:
             application/json:
-              example:
-                lat: 33.44
-                lon: -94.04
-                timezone: America/Chicago
-                current:
-                  dt: 1684929490
-                  temp: 292.55
-                  weather:
-                    - id: 803
-                      main: Clouds
-                      description: broken clouds
-                      icon: 04d
-                hourly:
-                  - dt: 1684926000
-                    temp: 292.01
-                    weather:
-                      - id: 803
-                        main: Clouds
-                        description: broken clouds
-                        icon: 04n
+              schema:
+                $ref: '#/components/schemas/OneCallResponse'
         '400':
           description: Invalid request parameters.
         '401':
-          description: Unauthorized - Invalid API key.
+          description: Unauthorized. Missing or invalid API key.
+        '429':
+          description: Too many requests. Rate or quota limit exceeded.
+  /onecall/timemachine:
+    get:
+      operationId: getOneCallTimemachine
+      summary: Historical weather data for a coordinate and timestamp
+      description: >-
+        Returns historical weather data for the supplied latitude,
+        longitude, and Unix UTC timestamp. Data depth depends on the
+        subscription plan.
+      tags:
+        - One Call
+      parameters:
+        - name: lat
+          in: query
+          required: true
+          description: Latitude in decimal degrees.
+          schema:
+            type: number
+            format: float
+        - name: lon
+          in: query
+          required: true
+          description: Longitude in decimal degrees.
+          schema:
+            type: number
+            format: float
+        - name: dt
+          in: query
+          required: true
+          description: Unix UTC timestamp for the requested historical reading.
+          schema:
+            type: integer
+            format: int64
+        - name: units
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - standard
+              - metric
+              - imperial
+        - name: lang
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: appid
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Historical weather data response.
+          content:
+            application/json:
+              schema:
+                type: object
+        '400':
+          description: Invalid request parameters.
+        '401':
+          description: Unauthorized.
         '429':
           description: Too many requests.
+  /air_pollution:
+    get:
+      operationId: getCurrentAirPollution
+      summary: Current air pollution data for a coordinate
+      description: >-
+        Returns current air pollution data including the Air Quality
+        Index and concentrations of CO, NO, NO2, O3, SO2, PM2.5, PM10,
+        and NH3 for the supplied latitude and longitude.
       tags:
-        - Onecall
+        - Air Pollution
+      servers:
+        - url: https://api.openweathermap.org/data/2.5
+      parameters:
+        - name: lat
+          in: query
+          required: true
+          schema:
+            type: number
+            format: float
+        - name: lon
+          in: query
+          required: true
+          schema:
+            type: number
+            format: float
+        - name: appid
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Air pollution response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AirPollutionResponse'
+        '400':
+          description: Invalid request parameters.
+        '401':
+          description: Unauthorized.
+        '429':
+          description: Too many requests.
+  /air_pollution/forecast:
+    get:
+      operationId: getAirPollutionForecast
+      summary: Hourly air pollution forecast for a coordinate
+      description: >-
+        Returns the hourly air pollution forecast for the next 5 days
+        for the supplied latitude and longitude.
+      tags:
+        - Air Pollution
+      servers:
+        - url: https://api.openweathermap.org/data/2.5
+      parameters:
+        - name: lat
+          in: query
+          required: true
+          schema:
+            type: number
+            format: float
+        - name: lon
+          in: query
+          required: true
+          schema:
+            type: number
+            format: float
+        - name: appid
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Air pollution forecast response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AirPollutionResponse'
+        '400':
+          description: Invalid request parameters.
+        '401':
+          description: Unauthorized.
+        '429':
+          description: Too many requests.
+  /air_pollution/history:
+    get:
+      operationId: getAirPollutionHistory
+      summary: Historical air pollution data for a coordinate
+      description: >-
+        Returns historical hourly air pollution data for the supplied
+        latitude, longitude, and Unix UTC start/end timestamps. Data is
+        available from 27 November 2020 onwards.
+      tags:
+        - Air Pollution
+      servers:
+        - url: https://api.openweathermap.org/data/2.5
+      parameters:
+        - name: lat
+          in: query
+          required: true
+          schema:
+            type: number
+            format: float
+        - name: lon
+          in: query
+          required: true
+          schema:
+            type: number
+            format: float
+        - name: start
+          in: query
+          required: true
+          description: Unix UTC start timestamp.
+          schema:
+            type: integer
+            format: int64
+        - name: end
+          in: query
+          required: true
+          description: Unix UTC end timestamp.
+          schema:
+            type: integer
+            format: int64
+        - name: appid
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Historical air pollution response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AirPollutionResponse'
+        '400':
+          description: Invalid request parameters.
+        '401':
+          description: Unauthorized.
+        '429':
+          description: Too many requests.
 components:
   schemas:
     Weather:
@@ -99,5 +310,105 @@ components:
           type: string
         icon:
           type: string
+    OneCallResponse:
+      type: object
+      properties:
+        lat:
+          type: number
+          format: float
+        lon:
+          type: number
+          format: float
+        timezone:
+          type: string
+        timezone_offset:
+          type: integer
+        current:
+          type: object
+        minutely:
+          type: array
+          items:
+            type: object
+        hourly:
+          type: array
+          items:
+            type: object
+        daily:
+          type: array
+          items:
+            type: object
+        alerts:
+          type: array
+          items:
+            type: object
+    AirPollutionComponents:
+      type: object
+      properties:
+        co:
+          type: number
+          format: float
+        no:
+          type: number
+          format: float
+        no2:
+          type: number
+          format: float
+        o3:
+          type: number
+          format: float
+        so2:
+          type: number
+          format: float
+        pm2_5:
+          type: number
+          format: float
+        pm10:
+          type: number
+          format: float
+        nh3:
+          type: number
+          format: float
+    AirPollutionListItem:
+      type: object
+      properties:
+        dt:
+          type: integer
+          format: int64
+        main:
+          type: object
+          properties:
+            aqi:
+              type: integer
+              description: >-
+                Air Quality Index. 1 = Good, 2 = Fair, 3 = Moderate,
+                4 = Poor, 5 = Very Poor.
+        components:
+          $ref: '#/components/schemas/AirPollutionComponents'
+    AirPollutionResponse:
+      type: object
+      properties:
+        coord:
+          type: object
+          properties:
+            lat:
+              type: number
+              format: float
+            lon:
+              type: number
+              format: float
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/AirPollutionListItem'
+  securitySchemes:
+    appid:
+      type: apiKey
+      in: query
+      name: appid
+security:
+  - appid: []
 tags:
-  - name: Onecall
+  - name: One Call
+    description: Combined current weather, forecast, and historical weather data.
+  - name: Air Pollution
+    description: Current, forecast, and historical air pollution data.
