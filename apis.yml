@@ -6,7 +6,7 @@ description: >-
   They gather real-time data from a network of sensors, satellites, and weather
   stations to deliver comprehensive weather forecasts, historical weather data,
   and climate information.
-type: Contract
+kind: contract
 position: Consuming
 access: 3rd-Party
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
@@ -100,7 +100,7 @@ common:
     description: OpenWeather privacy policy.
   - url: https://openweather.co.uk/terms
     name: Terms of Service
-    type: Terms of Service
+    type: TermsOfService
     description: OpenWeather terms of service.
 maintainers:
   - FN: Kin Lane
