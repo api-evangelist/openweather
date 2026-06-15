@@ -1,0 +1,225 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenWeather One Call and Air Pollution API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "appid",
+      "value": "{{appid}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "One Call",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Current and forecast weather data for a coordinate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openweathermap.org/data/3.0/onecall",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude in decimal degrees, range -90 to 90."
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude in decimal degrees, range -180 to 180."
+              },
+              {
+                "name": "exclude",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of forecast blocks to omit from the response. Allowed values are current, minutely, hourly, daily, and alerts."
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query",
+                "description": "Units of measurement. One of standard, metric, or imperial. Default is standard (Kelvin, m/s)."
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query",
+                "description": "ISO language code for localized response text."
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query",
+                "description": "OpenWeather API key."
+              }
+            ]
+          },
+          "docs": "Returns current weather, minute-by-minute forecast for one hour, hourly forecast for 48 hours, daily forecast for 8 days, and any government weather alerts for the supplied latitude and longitude."
+        },
+        {
+          "info": {
+            "name": "Historical weather data for a coordinate and timestamp",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openweathermap.org/data/3.0/onecall/timemachine",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude in decimal degrees."
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude in decimal degrees."
+              },
+              {
+                "name": "dt",
+                "value": "",
+                "type": "query",
+                "description": "Unix UTC timestamp for the requested historical reading."
+              },
+              {
+                "name": "units",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "lang",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns historical weather data for the supplied latitude, longitude, and Unix UTC timestamp. Data depth depends on the subscription plan."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Air Pollution",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Current air pollution data for a coordinate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openweathermap.org/data/3.0/air_pollution",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns current air pollution data including the Air Quality Index and concentrations of CO, NO, NO2, O3, SO2, PM2.5, PM10, and NH3 for the supplied latitude and longitude."
+        },
+        {
+          "info": {
+            "name": "Hourly air pollution forecast for a coordinate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openweathermap.org/data/3.0/air_pollution/forecast",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns the hourly air pollution forecast for the next 5 days for the supplied latitude and longitude."
+        },
+        {
+          "info": {
+            "name": "Historical air pollution data for a coordinate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.openweathermap.org/data/3.0/air_pollution/history",
+            "params": [
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Unix UTC start timestamp."
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "Unix UTC end timestamp."
+              },
+              {
+                "name": "appid",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns historical hourly air pollution data for the supplied latitude, longitude, and Unix UTC start/end timestamps. Data is available from 27 November 2020 onwards."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

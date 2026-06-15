@@ -1,7 +1,8 @@
 aid: openweather
 name: OpenWeather
-description: OpenWeather is a data platform that provides accurate and reliable weather information to individuals, businesses,
-  and organizations around the world. They gather real-time data from a network of sensors, satellites, and weather stations
+description: >-
+  OpenWeather is a data platform that provides accurate and reliable weather information to individuals, businesses, and
+  organizations around the world. They gather real-time data from a network of sensors, satellites, and weather stations
   to deliver comprehensive weather forecasts, historical weather data, and climate information.
 kind: contract
 position: Consuming
@@ -20,43 +21,41 @@ specificationVersion: '0.19'
 apis:
   - aid: openweather:openweather-one-call-api
     name: OpenWeather One Call API
-    description: The One Call API provides current weather, minute-by-minute forecast for one hour, hourly forecast for 48 hours,
+    description: >-
+      The One Call API provides current weather, minute-by-minute forecast for one hour, hourly forecast for 48 hours,
       daily forecast for 8 days, and government weather alerts for any geographic coordinates.
     humanURL: https://openweathermap.org/api/one-call-3
     tags:
-    - Climate
-    - Forecasting
-    - Weather
+      - Climate
+      - Forecasting
+      - Weather
     properties:
-    - type: Documentation
-      url: https://openweathermap.org/api/one-call-3
-    - type: OpenAPI
-      url: openapi/openweather-openapi.yml
-    - type: Pricing
-      url: https://openweathermap.org/price
-    - type: SignUp
-      url: https://home.openweathermap.org/users/sign_up
-    - type: NaftikoCapability
-      url: capabilities/openweather-air-pollution.yaml
-    - type: NaftikoCapability
-      url: capabilities/openweather-one-call.yaml
+      - type: Documentation
+        url: https://openweathermap.org/api/one-call-3
+      - type: OpenAPI
+        url: openapi/openweather-openapi.yml
+      - type: Pricing
+        url: https://openweathermap.org/price
+      - type: SignUp
+        url: https://home.openweathermap.org/users/sign_up
   - aid: openweather:openweather-air-pollution-api
     name: OpenWeather Air Pollution API
-    description: The Air Pollution API provides current, forecast, and historical air pollution data for any coordinates on
-      the globe. It returns the basic Air Quality Index along with concentrations of CO, NO, NO2, O3, SO2, NH3, PM2.5, and PM10
-      pollutants.
+    description: >-
+      The Air Pollution API provides current, forecast, and historical air pollution data for any coordinates on the
+      globe. It returns the basic Air Quality Index along with concentrations of CO, NO, NO2, O3, SO2, NH3, PM2.5, and
+      PM10 pollutants.
     humanURL: https://openweathermap.org/api/air-pollution
     tags:
-    - Air Pollution
-    - Air Quality
-    - Weather
+      - Air Pollution
+      - Air Quality
+      - Weather
     properties:
-    - type: Documentation
-      url: https://openweathermap.org/api/air-pollution
-    - type: Pricing
-      url: https://openweathermap.org/price
-    - type: SignUp
-      url: https://home.openweathermap.org/users/sign_up
+      - type: Documentation
+        url: https://openweathermap.org/api/air-pollution
+      - type: Pricing
+        url: https://openweathermap.org/price
+      - type: SignUp
+        url: https://home.openweathermap.org/users/sign_up
 common:
   - type: GitHubOrganization
     url: https://github.com/openweathermap
