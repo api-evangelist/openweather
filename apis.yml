@@ -36,7 +36,7 @@ apis:
         url: openapi/openweather-openapi.yml
       - type: Pricing
         url: https://openweathermap.org/price
-      - type: SignUp
+      - type: Signup
         url: https://home.openweathermap.org/users/sign_up
   - aid: openweather:openweather-air-pollution-api
     name: OpenWeather Air Pollution API
@@ -54,7 +54,7 @@ apis:
         url: https://openweathermap.org/api/air-pollution
       - type: Pricing
         url: https://openweathermap.org/price
-      - type: SignUp
+      - type: Signup
         url: https://home.openweathermap.org/users/sign_up
 common:
   - type: GitHubOrganization
@@ -79,7 +79,7 @@ common:
     description: OpenWeather subscription tiers and pricing.
   - url: https://home.openweathermap.org/users/sign_up
     name: Sign Up
-    type: SignUp
+    type: Signup
     description: Create an OpenWeather account and obtain an API key.
   - url: https://openweather.co.uk/blog
     name: Blog
