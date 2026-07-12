@@ -1,0 +1,15 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/openweather-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - query
+schemes:
+- name: appid
+  type: apiKey
+  in: query
+  parameter: appid
+  sources:
+  - openapi/openweather-openapi.yml

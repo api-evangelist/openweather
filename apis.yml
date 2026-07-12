@@ -57,6 +57,10 @@ apis:
       - type: Signup
         url: https://home.openweathermap.org/users/sign_up
 common:
+  - type: DomainSecurity
+    url: security/openweather-domain-security.yml
+  - type: Authentication
+    url: authentication/openweather-authentication.yml
   - type: GitHubOrganization
     url: https://github.com/openweathermap
   - type: LinkedIn
