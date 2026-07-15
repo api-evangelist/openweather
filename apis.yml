@@ -57,6 +57,8 @@ apis:
       - type: Signup
         url: https://home.openweathermap.org/users/sign_up
 common:
+  - type: AgenticAccess
+    url: agentic-access/openweather-agentic-access.yml
   - type: DomainSecurity
     url: security/openweather-domain-security.yml
   - type: Authentication
