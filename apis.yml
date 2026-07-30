@@ -5,9 +5,22 @@ description: >-
   organizations around the world. They gather real-time data from a network of sensors, satellites, and weather stations
   to deliver comprehensive weather forecasts, historical weather data, and climate information.
 kind: contract
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consuming
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/openweather.png
 tags:
   - Air Pollution
   - Air Quality
@@ -19,43 +32,54 @@ modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/openweather/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: openweather:openweather-one-call-api
-    name: OpenWeather One Call API
-    description: >-
-      The One Call API provides current weather, minute-by-minute forecast for one hour, hourly forecast for 48 hours,
-      daily forecast for 8 days, and government weather alerts for any geographic coordinates.
-    humanURL: https://openweathermap.org/api/one-call-3
-    tags:
-      - Climate
-      - Forecasting
-      - Weather
-    properties:
-      - type: Documentation
-        url: https://openweathermap.org/api/one-call-3
-      - type: OpenAPI
-        url: openapi/openweather-openapi.yml
-      - type: Pricing
-        url: https://openweathermap.org/price
-      - type: Signup
-        url: https://home.openweathermap.org/users/sign_up
-  - aid: openweather:openweather-air-pollution-api
-    name: OpenWeather Air Pollution API
-    description: >-
-      The Air Pollution API provides current, forecast, and historical air pollution data for any coordinates on the
-      globe. It returns the basic Air Quality Index along with concentrations of CO, NO, NO2, O3, SO2, NH3, PM2.5, and
-      PM10 pollutants.
-    humanURL: https://openweathermap.org/api/air-pollution
-    tags:
-      - Air Pollution
-      - Air Quality
-      - Weather
-    properties:
-      - type: Documentation
-        url: https://openweathermap.org/api/air-pollution
-      - type: Pricing
-        url: https://openweathermap.org/price
-      - type: Signup
-        url: https://home.openweathermap.org/users/sign_up
+- aid: openweather:openweather-air-pollution-api
+  name: OpenWeather Air Pollution API
+  description: >-
+    The Air Pollution API provides current, forecast, and historical air pollution data for any coordinates
+    on the globe. It returns the basic Air Quality Index along with concentrations of CO, NO, NO2, O3,
+    SO2, NH3, PM2.5, and PM10 pollutants.
+  humanURL: https://openweathermap.org/api/air-pollution
+  tags:
+  - Air Pollution
+  - Air Quality
+  - Weather
+  properties:
+  - type: Documentation
+    url: https://openweathermap.org/api/air-pollution
+  - type: Pricing
+    url: https://openweathermap.org/price
+  - type: Signup
+    url: https://home.openweathermap.org/users/sign_up
+- aid: openweather:openweather-air-pollution-api
+  name: OpenWeather Air Pollution API
+  description: Current, forecast, and historical air pollution data.
+  humanURL: https://openweathermap.org/api/one-call-3
+  tags:
+  - Air Pollution
+  properties:
+  - type: OpenAPI
+    url: openapi/openweather-air-pollution-api-openapi.yml
+  - type: Documentation
+    url: https://openweathermap.org/api/one-call-3
+  - type: Pricing
+    url: https://openweathermap.org/price
+  - type: Signup
+    url: https://home.openweathermap.org/users/sign_up
+- aid: openweather:openweather-one-call-api
+  name: OpenWeather One Call API
+  description: Combined current weather, forecast, and historical weather data.
+  humanURL: https://openweathermap.org/api/one-call-3
+  tags:
+  - One Call
+  properties:
+  - type: OpenAPI
+    url: openapi/openweather-one-call-api-openapi.yml
+  - type: Documentation
+    url: https://openweathermap.org/api/one-call-3
+  - type: Pricing
+    url: https://openweathermap.org/price
+  - type: Signup
+    url: https://home.openweathermap.org/users/sign_up
 common:
   - type: AgenticAccess
     url: agentic-access/openweather-agentic-access.yml
