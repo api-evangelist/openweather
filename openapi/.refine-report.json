@@ -1,0 +1,16 @@
+{
+  "provider": "openweather",
+  "sources": [
+    "openweather-air-pollution-api-openapi.yml",
+    "openweather-one-call-api-openapi.yml"
+  ],
+  "outputs": [
+    "openweather-air-pollution-api-openapi.yml",
+    "openweather-one-call-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
