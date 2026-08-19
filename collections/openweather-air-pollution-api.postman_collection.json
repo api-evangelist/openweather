@@ -1,0 +1,910 @@
+{
+  "item": [
+    {
+      "id": "c32226f2-015a-41e8-ba82-0e2b5affc75b",
+      "name": "Air Pollution",
+      "description": {
+        "content": "Current, forecast, and historical air pollution data.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a81df841-4d6d-4a2e-86d1-ebe00b194b52",
+          "name": "Current air pollution data for a coordinate",
+          "request": {
+            "name": "Current air pollution data for a coordinate",
+            "description": {
+              "content": "Returns current air pollution data including the Air Quality Index and concentrations of CO, NO, NO2, O3, SO2, PM2.5, PM10, and NH3 for the supplied latitude and longitude.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "data",
+                "2.5",
+                "air_pollution"
+              ],
+              "host": [
+                "api",
+                "openweathermap",
+                "org"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<float>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<float>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "appid",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3bcbc43c-c067-467d-8171-4d51e1ea80f9",
+              "name": "Air pollution response.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "data",
+                    "2.5",
+                    "air_pollution"
+                  ],
+                  "host": [
+                    "api",
+                    "openweathermap",
+                    "org"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"coord\": {\n    \"lat\": 7493.301378147647,\n    \"lon\": 4625.813177052267\n  },\n  \"list\": [\n    {\n      \"dt\": 45,\n      \"main\": {\n        \"aqi\": 2337\n      },\n      \"components\": {\n        \"co\": 7383.159692542838,\n        \"false\": 9873.011029780155,\n        \"no2\": 9435.38910890514,\n        \"o3\": 4996.047194468325,\n        \"so2\": 249.4251717290208,\n        \"pm2_5\": 6414.456612516217,\n        \"pm10\": 6621.6231197659035,\n        \"nh3\": 1656.6207492051287\n      }\n    },\n    {\n      \"dt\": 3866,\n      \"main\": {\n        \"aqi\": 3856\n      },\n      \"components\": {\n        \"co\": 6566.374629610618,\n        \"false\": 1611.890949285577,\n        \"no2\": 5597.395313800519,\n        \"o3\": 2666.5702382674526,\n        \"so2\": 5628.939340198808,\n        \"pm2_5\": 3192.673741457772,\n        \"pm10\": 8773.419564205129,\n        \"nh3\": 842.086631661958\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a3c6c7c-c613-49e8-b80f-dcfa090a83b8",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "data",
+                    "2.5",
+                    "air_pollution"
+                  ],
+                  "host": [
+                    "api",
+                    "openweathermap",
+                    "org"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "972c6693-d98c-486e-98c1-711b28cbcdc8",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "data",
+                    "2.5",
+                    "air_pollution"
+                  ],
+                  "host": [
+                    "api",
+                    "openweathermap",
+                    "org"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5a8ca373-fc39-4e41-b35d-a730db5fe3ec",
+              "name": "Too many requests.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "data",
+                    "2.5",
+                    "air_pollution"
+                  ],
+                  "host": [
+                    "api",
+                    "openweathermap",
+                    "org"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "82068214-7843-48de-9412-436495673a91",
+          "name": "Hourly air pollution forecast for a coordinate",
+          "request": {
+            "name": "Hourly air pollution forecast for a coordinate",
+            "description": {
+              "content": "Returns the hourly air pollution forecast for the next 5 days for the supplied latitude and longitude.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "data",
+                "2.5",
+                "air_pollution",
+                "forecast"
+              ],
+              "host": [
+                "api",
+                "openweathermap",
+                "org"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<float>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<float>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "appid",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "da51a503-5deb-4d99-982b-ffa774b60611",
+              "name": "Air pollution forecast response.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "data",
+                    "2.5",
+                    "air_pollution",
+                    "forecast"
+                  ],
+                  "host": [
+                    "api",
+                    "openweathermap",
+                    "org"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"coord\": {\n    \"lat\": 7493.301378147647,\n    \"lon\": 4625.813177052267\n  },\n  \"list\": [\n    {\n      \"dt\": 45,\n      \"main\": {\n        \"aqi\": 2337\n      },\n      \"components\": {\n        \"co\": 7383.159692542838,\n        \"false\": 9873.011029780155,\n        \"no2\": 9435.38910890514,\n        \"o3\": 4996.047194468325,\n        \"so2\": 249.4251717290208,\n        \"pm2_5\": 6414.456612516217,\n        \"pm10\": 6621.6231197659035,\n        \"nh3\": 1656.6207492051287\n      }\n    },\n    {\n      \"dt\": 3866,\n      \"main\": {\n        \"aqi\": 3856\n      },\n      \"components\": {\n        \"co\": 6566.374629610618,\n        \"false\": 1611.890949285577,\n        \"no2\": 5597.395313800519,\n        \"o3\": 2666.5702382674526,\n        \"so2\": 5628.939340198808,\n        \"pm2_5\": 3192.673741457772,\n        \"pm10\": 8773.419564205129,\n        \"nh3\": 842.086631661958\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "81b728b7-d291-4b23-b80a-c54305be89f2",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "data",
+                    "2.5",
+                    "air_pollution",
+                    "forecast"
+                  ],
+                  "host": [
+                    "api",
+                    "openweathermap",
+                    "org"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "496aa7e2-8ba3-4e36-932b-d06c383d22fc",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "data",
+                    "2.5",
+                    "air_pollution",
+                    "forecast"
+                  ],
+                  "host": [
+                    "api",
+                    "openweathermap",
+                    "org"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8601fa6e-6408-461a-a510-7e5c08b81139",
+              "name": "Too many requests.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "data",
+                    "2.5",
+                    "air_pollution",
+                    "forecast"
+                  ],
+                  "host": [
+                    "api",
+                    "openweathermap",
+                    "org"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fb91c4b5-34c8-4a6b-bb9f-c7369984d12b",
+          "name": "Historical air pollution data for a coordinate",
+          "request": {
+            "name": "Historical air pollution data for a coordinate",
+            "description": {
+              "content": "Returns historical hourly air pollution data for the supplied latitude, longitude, and Unix UTC start/end timestamps. Data is available from 27 November 2020 onwards.",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "data",
+                "2.5",
+                "air_pollution",
+                "history"
+              ],
+              "host": [
+                "api",
+                "openweathermap",
+                "org"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<float>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<float>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<long>",
+                  "description": "(Required) Unix UTC start timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<long>",
+                  "description": "(Required) Unix UTC end timestamp."
+                },
+                {
+                  "disabled": false,
+                  "key": "appid",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e0bcac8d-bf7e-4a60-a0f4-de5b21fe6673",
+              "name": "Historical air pollution response.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "data",
+                    "2.5",
+                    "air_pollution",
+                    "history"
+                  ],
+                  "host": [
+                    "api",
+                    "openweathermap",
+                    "org"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"coord\": {\n    \"lat\": 7493.301378147647,\n    \"lon\": 4625.813177052267\n  },\n  \"list\": [\n    {\n      \"dt\": 45,\n      \"main\": {\n        \"aqi\": 2337\n      },\n      \"components\": {\n        \"co\": 7383.159692542838,\n        \"false\": 9873.011029780155,\n        \"no2\": 9435.38910890514,\n        \"o3\": 4996.047194468325,\n        \"so2\": 249.4251717290208,\n        \"pm2_5\": 6414.456612516217,\n        \"pm10\": 6621.6231197659035,\n        \"nh3\": 1656.6207492051287\n      }\n    },\n    {\n      \"dt\": 3866,\n      \"main\": {\n        \"aqi\": 3856\n      },\n      \"components\": {\n        \"co\": 6566.374629610618,\n        \"false\": 1611.890949285577,\n        \"no2\": 5597.395313800519,\n        \"o3\": 2666.5702382674526,\n        \"so2\": 5628.939340198808,\n        \"pm2_5\": 3192.673741457772,\n        \"pm10\": 8773.419564205129,\n        \"nh3\": 842.086631661958\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cc7d1ae2-3d2e-457d-8c19-d852903a235c",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "data",
+                    "2.5",
+                    "air_pollution",
+                    "history"
+                  ],
+                  "host": [
+                    "api",
+                    "openweathermap",
+                    "org"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "88f87bc7-f251-442f-b2cb-d2e48eef2725",
+              "name": "Unauthorized.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "data",
+                    "2.5",
+                    "air_pollution",
+                    "history"
+                  ],
+                  "host": [
+                    "api",
+                    "openweathermap",
+                    "org"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "66dd7ab7-9665-407a-a4c9-b005ac41984b",
+              "name": "Too many requests.",
+              "originalRequest": {
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "data",
+                    "2.5",
+                    "air_pollution",
+                    "history"
+                  ],
+                  "host": [
+                    "api",
+                    "openweathermap",
+                    "org"
+                  ],
+                  "query": [
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<long>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "appid",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.openweathermap.org/data/3.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "appid"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "120e8e67-0db4-4e1e-8fde-7c76f4c92c17",
+    "name": "OpenWeather One Call and Air Pollution API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Programmatic access to the OpenWeather One Call API for current, minute, hourly, and daily forecasts plus government weather alerts, and the OpenWeather Air Pollution API for current, forecast, and historical air quality data including the Air Quality Index and pollutant concentrations.\n\nContact Support:\n Name: OpenWeather",
+      "type": "text/plain"
+    }
+  }
+}
