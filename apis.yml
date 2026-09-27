@@ -47,28 +47,14 @@ specificationVersion: '0.23'
 apis:
 - aid: openweather:openweather-air-pollution-api
   name: OpenWeather Air Pollution API
-  description: >-
-    The Air Pollution API provides current, forecast, and historical air pollution data for any coordinates
-    on the globe. It returns the basic Air Quality Index along with concentrations of CO, NO, NO2, O3,
-    SO2, NH3, PM2.5, and PM10 pollutants.
+  description: The Air Pollution API provides current, forecast, and historical air pollution data for any
+    coordinates on the globe. It returns the basic Air Quality Index along with concentrations of CO, NO,
+    NO2, O3, SO2, NH3, PM2.5, and PM10 pollutants.
   humanURL: https://openweathermap.org/api/air-pollution
   tags:
   - Air Pollution
   - Air Quality
   - Weather
-  properties:
-  - type: Documentation
-    url: https://openweathermap.org/api/air-pollution
-  - type: Pricing
-    url: https://openweathermap.org/price
-  - type: Signup
-    url: https://home.openweathermap.org/users/sign_up
-- aid: openweather:openweather-air-pollution-api
-  name: OpenWeather Air Pollution API
-  description: Current, forecast, and historical air pollution data.
-  humanURL: https://openweathermap.org/api/one-call-3
-  tags:
-  - Air Pollution
   properties:
   - type: OpenAPI
     url: openapi/openweather-air-pollution-api-openapi.yml
@@ -78,6 +64,8 @@ apis:
     url: https://openweathermap.org/price
   - type: Signup
     url: https://home.openweathermap.org/users/sign_up
+  - type: Documentation
+    url: https://openweathermap.org/api/air-pollution
 - aid: openweather:openweather-one-call-api
   name: OpenWeather One Call API
   description: Combined current weather, forecast, and historical weather data.

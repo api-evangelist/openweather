@@ -156,6 +156,22 @@ paths:
           description: Too many requests.
 components:
   schemas:
+    AirPollutionResponse:
+      type: object
+      properties:
+        coord:
+          type: object
+          properties:
+            lat:
+              type: number
+              format: float
+            lon:
+              type: number
+              format: float
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/AirPollutionListItem'
     AirPollutionComponents:
       type: object
       properties:
@@ -197,22 +213,6 @@ components:
               description: Air Quality Index. 1 = Good, 2 = Fair, 3 = Moderate, 4 = Poor, 5 = Very Poor.
         components:
           $ref: '#/components/schemas/AirPollutionComponents'
-    AirPollutionResponse:
-      type: object
-      properties:
-        coord:
-          type: object
-          properties:
-            lat:
-              type: number
-              format: float
-            lon:
-              type: number
-              format: float
-        list:
-          type: array
-          items:
-            $ref: '#/components/schemas/AirPollutionListItem'
   securitySchemes:
     appid:
       type: apiKey
