@@ -16,16 +16,30 @@ deployment:
 tools_count: 6
 tools:
 - name: list_products
-  description: ''
+  description: 'Lists every data product the Forum serves, as the platform''s own catalogue answer: slug,
+    title, lifecycle state, price in credits per call (1 credit = $0.001; the quoted price is the charged
+    price), licence and attribution text, and the add'
 - name: get_product
-  description: ''
+  description: 'Returns one product by slug: its live catalogue entry (price, licence, lifecycle state,
+    the specification address) together with the routes fetch_data can call and the parameters each route
+    requires, taken from the platform''s published prod'
 - name: sign_up
-  description: ''
+  description: Creates a Forum account for an email address under the Terms version currently served,
+    and returns the account, its secret — the one string that runs the account, shown exactly once — and
+    its first data key, shown exactly once. It grants th
 - name: account_status
-  description: ''
+  description: 'Reads the account behind the secret: tier, accepted Terms version, the products it may
+    call, the balance in credits the account bought minus the spend those credits funded, the last 30
+    days of usage per day, product and key, and the 50 late'
 - name: get_topup_link
-  description: ''
+  description: Opens a top-up for the account and returns the payment intent with hosted_url, the payment
+    provider's short-lived page where a human completes the payment — no tool pays, and card details never
+    touch the Forum. amount_minor is in cents; the
 - name: fetch_data
-  description: ''
+  description: 'Fetches one data response: GET data.openweathermap.org/{product}/{route} with the query
+    parameters you pass, using the data key from your client configuration''s Authorization header or
+    the data_key argument — never the secret, which fetches'
 tools_source: live tools/list via initialize handshake, 2026-09-11 (signals/audit_mcp_authorship.py --probe)
 authorship: provider
+descriptions_source: live tools/list (authorship probe or saved capture); filled by backfill-tools-from-authorship.py
+  --descriptions, 2026-09-28
